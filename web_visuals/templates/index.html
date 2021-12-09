@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <!-- <link rel="icon" href="%PUBLIC_URL%/img/favicon-mini.png"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Happy Map</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+        <!-- Our CSS -->
+        <!-- <link rel="stylesheet" type="text/css" href="static/css/style.css"> -->
+        <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+
+        <script src='https://cdn.plot.ly/plotly-2.4.2.min.js'></script>
+
+    </head>
+
+    <body>
+
+        <!-- Navbar -->
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Navbar</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/pred">Link</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled">Disabled</a>
+                  </li>
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+
+        <!-- END Navbar -->
+        
+            <!-- Title -->
+        <div class="container title">
+            <div class="row">
+              <div class="col-md-12 jumbotron text-center">
+                <h1 class="ml2">Happiness Analysis</h1>
+                <p>Use the drop down button below to view charts by year.</p>
+              </div>
+            </div>
+        </div>
+            <!-- END - Title -->
+
+        <div class="container dropDown">
+            <!-- Drop down menu -->
+            <ul class="nav nav-pills">
+                <li class="nav-item dropdown">
+                <select name="data" id="selTable" onchange="optionChanged(this.value)" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><option selection="selected" value="2015">Select One</option>
+                  <!-- <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><option selection="selected" value="2015">Select One</option></a> --> 
+                  <div class="dropdown-menu" style="">
+                    <a class="dropdown-item" href="#"><option value="2015">2015 Chart</option></a>
+                    <a class="dropdown-item" href="#"><option value="2016">2016 Chart</option></a>
+                  </div>
+                </select>
+                </li>
+              </ul>
+            <!-- END - Bubble Drop down menu -->
+        </div>
+
+    <div class="container2">
+        <div class="row">
+                <!--World Map-->
+        <!-- <div class="col-lg-9"> -->
+            <div class="card border-info mb-3" style="width: 877px;" style="max-height: 600px;">
+                <div class="card-body">
+                  <h4 class="card-title"justify-content: center;>World Happiness Map</h4>
+                  <div class="myDiv"> 
+                    <div id="myDiv"><svg xmlns="myDiv" class="d-block user-select-none" width="100%" height="100%" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+                    <!-- <rect width="100%" height="100%" fill="#6CC3D5"></rect> -->
+                  </svg>
+                  </div>
+                  </div>
+                </div>
+            </div> 
+        <!-- </div> -->
+        <!-- END - World Map -->
+
+         <!-- Bubble Chart -->
+            <div class="card border-info mb-3" style="width: 877px;" style="max-height: 600px;">
+                <div class="card-body">
+                <h4 class="card-title">Happiness Score vs Suicide Rates by Country</h4>
+                    <div class="col bubble">
+                        <div id="bubble"><svg xmlns="bubble" class="d-block user-select-none" width="100%" height="100%" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+                <!-- <rect width="100%" height="100%" fill="#6CC3D5"></rect> -->
+                        </svg>
+                        </div>
+                    </div>
+                </div>  
+            </div> 
+             <!-- End Bubble Chart -->
+        </div>
+ 
+        <!--Table -->
+        <div class="row">
+            <div class="col-lg-3"> 
+                <table id="ufo-table" class="table table-hover">
+                    <thead>
+                        <tr class="table-info">
+                            <th scope="row">Country</th>
+                            <th scope="row">Happiness</br> Score</th>
+                            <th scope="row">Happiness</br> Rank</th>
+                            <th scope="row">Country </br> Code</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <!--End Table -->
+
+            <!-- Happy by Reg bar graph --> 
+            <div class="card border-info mb-3" style="max-width: 40rem;">
+                <div class="card-body">
+                <h4 class="card-title" justify-content: center;>Happiness Score by Region</h4>
+                    <div class="col myagg">
+                        <div id="myagg"><svg xmlns="myagg" class="d-block user-select-none" width="100%" height="100%" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+                <!-- <rect width="100%" height="100%" fill="#6CC3D5"></rect> -->
+                        </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Happy by Reg End bar-->
+
+                <!-- LE bar graph --> 
+            <div class="card border-info mb-3" style="max-width: 40rem;">
+                <div class="card-body">
+                <h4 class="card-title" justify-content: center;>Life Expectancy by Region</h4>
+                    <div class="box myagg">
+                        <div id="mylifeagg"><svg xmlns="myagg" class="d-block user-select-none" width="100%" height="100%" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">   
+                        </svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- LE End bar-->
+            </div>
+           
+    </div>
+
+        <!-- Optional JavaScript; choose one of the two! -->
+        <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
+
+        <!-- Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" 
+            crossorigin="anonymous"></script>
+
+        <!-- tobiasahlin.com moving letters-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+        <!-- D3 JavaScript -->
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+
+        <!-- Our JavaScript -->
+        <script type="text/javascript" src="static/js/app.js"></script>
+    </body>
+
+</html>
